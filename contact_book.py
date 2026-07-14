@@ -1,10 +1,15 @@
 # Contact Book CLI
-contacts = {}
+import json
+try:
+    with open("contacts.json", "r") as file:
+        contacts = json.load(file)
+except FileNotFoundError:
+    contacts = {}
 print("Console based Contact Book")
 
 while True:
     print("1.Add Contact \n2.View All Contacts \n3.Search Contact \n4.Delete Contact \n5.Exit")
-    choice= input("Slect an option: ")
+    choice= input("Select an option: ")
     
     if choice== "1":
         name= input("Enter Name: ")
@@ -30,6 +35,8 @@ while True:
             name = name.strip()
             contacts[name] = {"phone": phone, "email": email}
             print(f"{name} added successfully..!")
+            with open("contacts.json","w") as file:
+                json.dump(contacts, file, indent=4)
             
     elif choice == "2":
         print("Viewing all contacts: ")
@@ -50,9 +57,12 @@ while True:
         if del_contact in contacts:
             del contacts[del_contact]
             print(f"{del_contact} deleted successfully..!")
+            with open("contacts.json","w") as file:
+                json.dump(contacts, file, indent=4)
+            
         else:
             print(f"{del_contact} not found.. !")
-            
+    
     elif choice == "5":
         print("Thank you for using the System..!!")
         break
