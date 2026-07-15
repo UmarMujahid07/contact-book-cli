@@ -11,7 +11,7 @@ print("\nConsole based Contact Book")
 while True:
     print("\n1.Add Contact \n2.View All Contacts \n3.Search Contact \n4.Delete Contact \n5.Exit")
     choice = input("Select an option: ")
-    print()  # Terminal par spacing ke liye
+    print() 
     
     if choice == "1":
         name = input("Enter Name: ")
