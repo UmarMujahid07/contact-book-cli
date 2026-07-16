@@ -1,33 +1,31 @@
-# Console-Based Contact Book (CLI) with JSON Storage 
+# Console-Based Contact Book (OOP Version)
 
-A simple, interactive, and secure Command Line Interface (CLI) Contact Book application built using Python. This project demonstrates core programming concepts such as loops, conditional statements, nested dictionaries, robust user input validation, and permanent data storage.
+A lightweight, robust command-line interface (CLI) application written in Python that manages a contact directory with full persistent storage and secure input validation. 
 
-## Features
+Recently refactored from a procedural approach to an **Object-Oriented Programming (OOP) Architecture** to ensure clean code principles, scalability, and loose coupling.
 
-- **JSON Data Persistence:** Automatically saves and loads your contact list to/from a local `contacts.json` file. Your data is never lost when you close the application!
-- **Add Contact:** Save a new contact with their Name, Phone Number, and Email.
-- **Input Validation:** 
-  - Prevents empty or blank names using `.strip()`.
-  - Ensures the phone number contains *only digits* using `.isdigit()`.
-  - Validates email addresses by checking for the `@` symbol.
-- **View All Contacts:** Lists all saved contacts in a clean, readable format.
-- **Search Contact:** Instantly look up a contact's details by their name.
-- **Delete Contact:** Remove an existing contact from the database securely (and updates the JSON file automatically).
-- **Duplicate Prevention:** Alerts the user if they try to add a name that already exists.
+## Tech Stack & Key Concepts
 
-## Concepts Demonstrated
+* **Language:** Python 3
+* **Data Persistence:** JSON (using Python's native `json` library)
+* **Design Pattern:** Object-Oriented Programming (OOP)
+  * **Encapsulation:** Grouping contact-specific properties and behaviors within a `Contact` class.
+  * **Separation of Concerns:** Delegating CLI control flow, file I/O operations, and list management to the `ContactBook` coordinator class.
 
-- **File Handling & Serialization:** Utilizing Python's native `json` module (`json.dump()` and `json.load()`) to serialize nested Python dictionaries into readable JSON files.
-- **Exception Handling:** Using `try-except` blocks to handle `FileNotFoundError` gracefully when reading the database for the first time.
-- **Data Structures:** Nested Dictionaries (`contacts[name] = {"phone": ..., "email": ...}`)
-- **Loops & Control Flow:** `while True`, nested input validation loops, and dictionary item unpacking (`.items()`).
-- **String Methods:** `.strip()` for data cleaning and `.isdigit()` for type validation.
+## Input Validation & Robustness
 
-## How to Run
+The application actively sanitizes and validates user inputs before appending them to the persistent storage:
 
-1. Make sure you have **Python 3** installed on your system.
-2. Clone this repository or download the code file.
-3. Open your terminal or command prompt, navigate to the project folder, and run:
+| Field | Rule | Handling Method |
+| :--- | :--- | :--- |
+| **Name** | Cannot be empty, must contain only letters and spaces (No digits or special characters) | `.strip()` & `.replace(" ", "").isalpha()` loop |
+| **Phone** | Must contain only digits | `.isdigit()` loop |
+| **Email** | Must contain a valid `@` symbol | Character membership validation loop |
 
-```bash
-python contact_book.py
+
+## How to Run Locally
+
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repository-link>
+   cd CONTACT-BOOK-CLI
