@@ -27,5 +27,5 @@ The application actively sanitizes and validates user inputs before appending th
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repository-link>
+   git clone git clone [https://github.com/UmarMujahid07/contact-book-cli.git](https://github.com/UmarMujahid07/contact-book-cli.git)
    cd CONTACT-BOOK-CLI
